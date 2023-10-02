@@ -1,4 +1,5 @@
 import Logo from "../assets/FullLogo_Transparent_NoBuffer.png"
+import "../components/Header.css"
 
 
 export const Header = () => {
