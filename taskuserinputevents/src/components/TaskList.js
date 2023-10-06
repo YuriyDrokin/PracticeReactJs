@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { TaskCard } from './TaskCard';
 import { BoxCard } from './BoxCard';
 import "./TaskList.css";
+import "./AddTask.css";
 
-export const TaskList = () => {
-  const [tasks, setTasks] = useState([
-    { id: 5271, name: "Record React Lectures", completed: true },
-    { id: 7825, name: "Edit React Lectures", completed: false },
-    { id: 8391, name: "Watch Lectures", completed: false }
-  ]);
+export const TaskList = ({ tasks, setTasks }) => {
+
   const [show, setShow] = useState(true);
+
   const styles = {
     color: show ? "#3D8361" : "#be3434",
     border: "2px solid",
