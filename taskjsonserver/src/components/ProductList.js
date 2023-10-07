@@ -4,18 +4,29 @@ export const ProductList = () => {
 
   const [products, setProducts] = useState([]);
 
-  console.log(products);
+  const [url, setUrl] = useState("http://localhost:8000/products")
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:8000/products")
+    fetch(url)
       .then(response => response.json())
       .then(data => setProducts(data));
 
-  }, []);
+  }, [url]);
+
+  useEffect(() => {
+    console.log(counter);
+  }, [counter])
 
 
   return (
     <section>
+      <div className="filter">
+        <button onClick={() => setCounter(counter + 1)}>{counter}</button>
+        <button onClick={() => setUrl("http://localhost:8000/products")}>All</button>
+        <button onClick={() => setUrl("http://localhost:8000/products?in_stock=true")}>In Stock Only</button>
+      </div>
+
       {products.map((product) => (
         <div className="card" key={product.id}>
           <p className="id">{product.id}</p>
