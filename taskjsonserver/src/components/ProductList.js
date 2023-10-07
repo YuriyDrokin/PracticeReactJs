@@ -6,7 +6,7 @@ export const ProductList = () => {
 
 
   const [url, setUrl] = useState("http://localhost:8000/products");
-  const { data: products } = useFetch(url);
+  const { data: products, loading } = useFetch(url);
 
 
   return (
@@ -16,6 +16,7 @@ export const ProductList = () => {
         <button onClick={() => setUrl("http://localhost:8000/products")}>All</button>
         <button onClick={() => setUrl("http://localhost:8000/products?in_stock=true")}>In Stock Only</button>
       </div>
+      {loading && <p>Loading products.....</p>}
 
       {products && products.map((product) => (
         <div className="card" key={product.id}>
